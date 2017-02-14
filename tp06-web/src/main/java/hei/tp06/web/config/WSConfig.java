@@ -18,7 +18,7 @@ import java.util.List;
 @Configuration
 @ComponentScan(basePackages = "hei.tp06.web.controller")
 @ImportResource({"classpath:META-INF/cxf/cxf.xml"})
-public class WSConfig {
+public class WSConfig implements RestController {
 
     @Inject
     private Bus cxfBus;
@@ -29,7 +29,7 @@ public class WSConfig {
     @Bean
     public Server jaxrsServer(JacksonJsonProvider jsonProvider){
         JAXRSServerFactoryBean sf = new JAXRSServerFactoryBean();
-        List<Object> serviceBeans = new ArrayList<>();
+        List<Object> serviceBeans = new ArrayList<Object>();
         serviceBeans.addAll(controllers);
         sf.setServiceBeans(serviceBeans);
         sf.setProviders(Arrays.asList(jsonProvider));
