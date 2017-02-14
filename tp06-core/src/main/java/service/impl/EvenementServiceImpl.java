@@ -20,6 +20,10 @@ public class EvenementServiceImpl implements EvenementService{
         return evenementDAO.findByTitle(title);
     }
 
+    public List<Evenement> findById(long id) {
+        return evenementDAO.findById(id);
+    }
+
     public void saveEvenement(Evenement evenement) {
         evenementDAO.save(evenement);
     }
@@ -27,7 +31,6 @@ public class EvenementServiceImpl implements EvenementService{
     public List<Evenement> findAll() {
         return evenementDAO.findAll();
     }
-
 
     public void deleteEvenement(long id) {
 

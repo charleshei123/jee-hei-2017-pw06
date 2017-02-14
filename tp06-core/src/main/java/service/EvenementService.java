@@ -11,6 +11,7 @@ public interface EvenementService {
 
     List<Evenement> findByTitle(String title);
 
+    List<Evenement> findById(long id);
 
     void saveEvenement(Evenement evenement);
 
