@@ -1,10 +1,8 @@
 package hei.tp06.web.controller.impl;
 
 import hei.tp06.core.entity.Evenement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import service.EvenementService;
-import service.impl.EvenementServiceImpl;
+import hei.tp06.web.controller.RestController;
+import hei.tp06.core.service.EvenementService;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,25 +18,28 @@ import java.util.List;
 @Path("/evenements")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class MainController {
+public class MainController implements RestController {
 
-        private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+    @Inject
+    private EvenementService evenement;
 
-        @Inject
-        private EvenementService evenement;
-
-        @GET
-        @Path("/evenements/")
-        public List<Evenement> getEvenement(){
-        //logger.info("Demande de l'evenement courant avec la clé {}", id);
+    @GET
+    @Path("")
+    public List<Evenement> getEvenement()
+    {
         return evenement.findAll();
-        }
+    }
 
-        @GET
-        @Path("/tp06‐web/api/evenements/{id}")
-        public List<Evenement> getCurrentEvenement(@PathParam("id") long id){
-            logger.info("Demande de l'evenement courant avec la clé {}", id);
-            return evenement.findById(id);
-        }
+    @GET
+    @Path("/{id}")
+    public Evenement getEvenement(@PathParam("id") Long id) {
+        return evenement.findById(id);
+    }
+
+    @POST
+    @Path("")
+    public void saveEvent(Evenement event) {
+        evenement.saveEvenement(event);
+    }
 
 }

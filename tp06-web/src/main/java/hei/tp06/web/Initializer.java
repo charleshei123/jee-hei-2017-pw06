@@ -1,5 +1,8 @@
 package hei.tp06.web;
 
+import hei.tp06.core.config.AppConfig;
+import hei.tp06.core.config.DBConfig;
+import hei.tp06.web.config.WSConfig;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -19,8 +22,7 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
 
 
     @Override
-    protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] {  };
+    protected Class<?>[] getRootConfigClasses() {return new Class<?>[]{AppConfig.class, DBConfig.class,WSConfig.class};
     }
 
 

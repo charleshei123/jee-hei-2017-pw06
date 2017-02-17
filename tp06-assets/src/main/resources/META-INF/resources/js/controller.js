@@ -50,7 +50,7 @@ function CalendarCtrl($scope,$compile,uiCalendarConfig,EvenementsWS) {
     $scope.alertOnEventClick = function( date, jsEvent, view){
         //$scope.alertMessage = (date.title + ' was clicked ');
         EvenementsWS.get({id:date.id}).$promise.then(function(data){
-            alert(data.description);
+            (data.description);
         });
     };
     /* alert on Drop */
@@ -96,6 +96,7 @@ function CalendarCtrl($scope,$compile,uiCalendarConfig,EvenementsWS) {
 
         });
     }
+
     /* remove event */
     $scope.remove = function(index) {
         $scope.events.splice(index,1);
